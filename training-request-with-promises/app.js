@@ -1,22 +1,39 @@
-const request = new XMLHttpRequest();
 
 
 
-request.addEventListener('readystatechange', () => {
+const getPokemons = callback => {
 
-    if (request.readyState === 4 & request.status === 200) {
-        console.log(request.responseText);
+    const request = new XMLHttpRequest();
+    
+    request.addEventListener('readystatechange', () => {
+    
+        if (request.readyState === 4 && request.status === 200) {
+            callback(null, request.responseText);
+            return
+        }
+    
+    
+        if (request.readyState === 4) {
+            callback('Não foi possivel obter os dados da API', null)
+        }
+    
+    });
+    
+    
+    request.open('GET', 'https://pokeapi.co/api/v2/pokemon/1');
+    request.send();
+
+}
+
+
+getPokemons((error, data) => {
+    if (error) {
+        console.log(error)
+        return
     }
 
-
-    if (request.readyState === 4) {
-        console.log('Não foi possivel obter os dados da API')
-    }
-
-
-});
+    console.log(data);
+})
 
 
 
-request.open('GET', 'https://pokeapi.co/api/v2/pokemon/1');
-request.send();
