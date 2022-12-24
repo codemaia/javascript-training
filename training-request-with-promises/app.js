@@ -8,7 +8,8 @@ const getPokemons = callback => {
     request.addEventListener('readystatechange', () => {
     
         if (request.readyState === 4 && request.status === 200) {
-            callback(null, request.responseText);
+            const data = JSON.parse(request.responseText);
+            callback(null, data);
             return
         }
     
