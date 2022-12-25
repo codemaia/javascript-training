@@ -7,12 +7,13 @@ const getPokemons = url => new Promise((resolve, reject) => {
     
         if (request.readyState === 4 && request.status === 200) {
             const data = JSON.parse(request.responseText);
-            resolve(data);
-            return
+            resolve(data.name);
+            
         }
     
         if (request.readyState === 4) {
             reject('Não foi possivel obter os dados da API');
+
         }
     
     });
