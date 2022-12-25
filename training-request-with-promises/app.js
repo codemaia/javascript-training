@@ -1,7 +1,5 @@
 
-
-
-const getPokemons = callback => {
+const getPokemons = (url, callback) => {
 
     const request = new XMLHttpRequest();
     
@@ -13,28 +11,26 @@ const getPokemons = callback => {
             return
         }
     
-    
         if (request.readyState === 4) {
-            callback('Não foi possivel obter os dados da API', null)
+            callback('Não foi possivel obter os dados da API', null);
         }
     
     });
     
     
-    request.open('GET', 'https://pokeapi.co/api/v2/pokemon/1');
+    request.open('GET', url);
     request.send();
 
 }
 
-
-getPokemons((error, data) => {
+getPokemons('https://pokeapi.co/api/v2/pokemon/1', (error, data) => {
     if (error) {
-        console.log(error)
-        return
+        console.log(error);
+        return;
     }
 
     console.log(data);
-})
+});
 
 
 
