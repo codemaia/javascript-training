@@ -29,21 +29,20 @@ const getCity = async cityName => {
 const getCityWeather = async cityName => {
 
     try {
-        const { Key } = await getCity(cityName);
-        const cityWeatherUrl = (`http://dataservice.accuweather.com/currentconditions/v1/${Key}?apikey=${APIKey}`);
+        const { Key } = await getCity(cityName)
+        const cityWeatherUrl = `http://dataservice.accuweather.com/currentconditions/v1/${Key}?apikey=${APIKey}`;
         const response = await fetch(cityWeatherUrl);
 
-        if (!response.ok) {
-            throw new Error('Não foi possível obter os dados da API');
-        }
-
-        const [cityWeatherData] = await response.json();
+        const [cityWeatherData] = await response.json()
+        
         return cityWeatherData;
 
+
     } catch ({ name, message }) {
-        console.log(`${name}: error${message}`);
+        console.log(`${name}: ${message}`);
     }
+    
 
 }
 
-// console.log(getCityWeather());
+// console.log(getCityWeather('Belém'));
