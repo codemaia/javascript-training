@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <form data-js="form-cadastro">
+      <h3>Cadastro de Processo</h3>
+      <div class="form-group">
+        <label for="productName">Titulo do Processo:</label>
+        <input data-js="input-process" type="text" class="form-control mt-2" id="productName" required>
+      </div>
+      <div class="form-group">
+        <label for="productCategory">Tipo do Processo</label>
+        <select data-js="tipo-processo" class="form-control mt-2" id="productCategory" required>
+          <option value="" disabled selected>Selecione o tipo</option>
+          <option value="category1">Juridico</option>
+          <option value="category2">Trabalhistas</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+
+    <script src="cadastroProdutos.js"></script>
+  </body>
+</html>
